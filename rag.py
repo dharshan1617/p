@@ -30,7 +30,7 @@ def ollama_llm(question, context):
 
 # Define the RAG chain
 def rag_chain(question):
-    retrieved_docs = retriever.invoke(question)
+    retrieved_docs = retriever.get_top_n(query, k=5)
     formatted_context = format_docs(retrieved_docs)
     return ollama_llm(question, formatted_context)
 
